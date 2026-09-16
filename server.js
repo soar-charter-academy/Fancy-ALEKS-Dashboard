@@ -12,6 +12,7 @@ const {
 } = require('./lib/metrics');
 
 const PORT = process.env.PORT || 4173;
+const HOST = process.env.HOST || '0.0.0.0'; // listen on every network interface, not just localhost, so other machines on the network (or a host platform) can reach it
 const TREND_WEEKS = 6; // how many recent weeks feed the per-student trend lines
 const INCOMING_DIR = path.join(__dirname, 'data', 'incoming');
 const PROCESSED_DIR = path.join(__dirname, 'data', 'processed');
@@ -151,6 +152,6 @@ app.get('/api/class-detail', (req, res) => {
   res.json(detail);
 });
 
-app.listen(PORT, () => {
-  console.log(`ALEKS dashboard running at http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`ALEKS dashboard running at http://localhost:${PORT} (listening on ${HOST})`);
 });
