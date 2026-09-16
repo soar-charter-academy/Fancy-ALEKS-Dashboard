@@ -1,0 +1,5 @@
+node_modules/
+data/incoming/*
+data/processed/*
+!data/incoming/.gitkeep
+!data/processed/.gitkeep

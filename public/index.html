@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ALEKS Weekly Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ALEKS Weekly Usage Dashboard</h1>
+    <div class="controls">
+      <label for="weekSelect">Week:</label>
+      <select id="weekSelect"></select>
+      <button id="ingestBtn">Process new reports</button>
+      <span id="ingestStatus"></span>
+    </div>
+  </header>
+
+  <main id="app">
+    <p id="emptyState">No data yet. Drop a weekly report in <code>data/incoming</code> and click "Process new reports".</p>
+
+    <div id="dashboard" hidden>
+      <p id="weekBanner" class="week-banner"></p>
+      <section class="card">
+        <h2>Weekly Activity Compliance</h2>
+        <p class="subtitle">% of students who met their grade-band weekly minute requirement (K-2: 30 min, 3-8: 45 min)</p>
+        <table id="complianceTable">
+          <thead><tr><th>Class</th><th>Grade Band</th><th>Requirement</th><th>Met / Total</th><th>Compliance %</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Top Learner per Class</h2>
+        <p class="subtitle">Student(s) with the most topics learned this week, by class</p>
+        <table id="topLearnerTable">
+          <thead><tr><th>Class</th><th>Grade Band</th><th>Topics Learned</th><th>Student(s)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Most Improved Class (Week over Week)</h2>
+        <p class="subtitle">Change in usage minutes compared to the prior week</p>
+        <p id="mostImprovedUnavailable" class="subtitle" hidden>Not enough history yet &mdash; process at least one prior week to see growth.</p>
+        <div id="mostImprovedContent" hidden>
+          <table id="usageGrowthTable">
+            <thead><tr><th>Class</th><th>Change in Minutes</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Total Topics Learned This Week</h2>
+        <p class="subtitle">Combined topics learned by all students in each class, this week</p>
+        <table id="topicsTotalTable">
+          <thead><tr><th>Class</th><th>Topics Learned</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
